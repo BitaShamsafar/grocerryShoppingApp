@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useCart} from "../Context/CartContext.tsx";
 
 export default function Navbar() {
-    const { cartCount } = useCart();
+    const { cart, cartCount } = useCart();
+    const [showCart, setShowCart] = useState(false);
     return (
         <div>
             <nav className="navbar">
@@ -27,9 +28,33 @@ export default function Navbar() {
                     ❤️ Wishlist
                 </button>
                 {/* Cart button with item count */}
-                <button  className="cart-btn">
+                <button  className="cart-btn" onClick={() => setShowCart(!showCart)}>
                     🛒 Cart ({cartCount})
                 </button>
+                    {/* Cart Dropdown */}
+                    {showCart && cart && (
+                        <div className="cart-dropdown">
+                            {/* Header */}
+                            <h3 className="cart-dropdown-title">My Cart</h3>
+                            {cart.items.length === 0 ? (
+                                <p className="empty-cart">Your cart is empty!</p>
+                            ) : (
+                                <ul className="cart-items">
+                                    {cart.items.map((item) => (
+                                        <li key={item.productId} className="cart-item">
+                                            <span>{item.name}</span>
+                                            <span>
+                        {item.quantity} × ${item.price.toFixed(2)}
+                      </span>
+                                        </li>
+                                    ))}
+                                    <li className="cart-total">
+                                        Total: ${cart.totalPrice.toFixed(2)}
+                                    </li>
+                                </ul>
+                            )}
+                        </div>
+                    )}
                 </div>
             </nav>
         </div>
