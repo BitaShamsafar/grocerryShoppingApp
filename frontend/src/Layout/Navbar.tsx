@@ -42,6 +42,11 @@ export default function Navbar() {
                                 <ul className="cart-items">
                                     {cart.items.map((item) => (
                                         <li key={item.productId} className="cart-item">
+                                            <img
+                                                src={item.image}
+                                                alt={item.name}
+                                                className="cart-item-image"
+                                            />
                                             <span>{item.name}</span>
                                             <span>
                         {item.quantity} × ${item.price.toFixed(2)}
