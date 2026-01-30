@@ -5,25 +5,32 @@ export default function Navbar() {
     const { cartCount } = useCart();
     return (
         <div>
-            <nav>
-                <h2>🛒 Grocery App</h2>
+            <nav className="navbar">
+                <h2 className="navbar-title">🛒 Grocery App</h2>
                 {/*Search field*/}
+                <div className="navbar-center">
+                <div className="search-container">
+                    <span>🔍</span>
                 <input
                     type="text"
                     placeholder="Search for products..."
                 />
+                </div>
+                </div>
+                <div className="navbar-right">
                 {/* Login button */}
-                <button>
-                    Login
+                <button className="login-btn">
+                    👤Login
                 </button>
                 {/* Wishlist button */}
-                <button>
+                <button className="wishlist-btn">
                     ❤️ Wishlist
                 </button>
                 {/* Cart button with item count */}
-                <button>
+                <button  className="cart-btn">
                     🛒 Cart ({cartCount})
                 </button>
+                </div>
             </nav>
         </div>
     );

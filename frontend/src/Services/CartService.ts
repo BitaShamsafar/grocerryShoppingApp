@@ -1,4 +1,3 @@
-// GET cart
 import {api} from "./api.ts";
 import type {Cart} from "../Types/Cart.ts";
 
@@ -13,7 +12,7 @@ export const getCart = (userId: string) => {
         });
 };
 
-// POST add item to cart ✅
+// POST: add item to cart
 export const addToCart = (
     userId: string,
     productId: string,

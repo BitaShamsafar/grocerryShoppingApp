@@ -25,7 +25,7 @@ export default function CartProvider({ children }: { children: React.ReactNode }
     useEffect(() => {
         getCart(USER_ID).then(setCart);
     }, []);
-    // Gesamtanzahl berechnen
+    // calculate the number of items
     const cartCount:number = cart ? cart.items.reduce((sum, item) => sum + item.quantity, 0) : 0;
     return (
         <CartContext.Provider value={{cart, cartCount, addItem}}>
