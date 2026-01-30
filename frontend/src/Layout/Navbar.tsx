@@ -1,6 +1,8 @@
 import React from 'react';
+import {useCart} from "../Context/CartContext.tsx";
 
-export default function Navbar(props) {
+export default function Navbar() {
+    const { cartCount } = useCart();
     return (
         <div>
             <nav>
@@ -20,7 +22,7 @@ export default function Navbar(props) {
                 </button>
                 {/* Cart button with item count */}
                 <button>
-                    🛒 Cart ({props.cartCount ?? 0})
+                    🛒 Cart ({cartCount})
                 </button>
             </nav>
         </div>
