@@ -7,3 +7,8 @@ export type Product ={
     stock?: number;
     image?: string;
 }
+
+export type ProductCardProps = {
+    product: Product;
+    index: number
+}

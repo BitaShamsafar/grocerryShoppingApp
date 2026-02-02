@@ -2,6 +2,7 @@ import './App.css'
 import {Route, Routes} from "react-router-dom";
 import Navbar from "./Layout/Navbar.tsx";
 import CartProvider from "./Context/CartContext.tsx";
+import AllProducts from "./Layout/AllProducts.tsx";
 
 function App() {
 
@@ -11,7 +12,7 @@ function App() {
     <CartProvider>
     <Navbar />
      <Routes>
-         <Route path="/" element={<h1>Hello!</h1>} />
+         <Route path="/" element={<AllProducts />}  />
      </Routes>
       </CartProvider>
 

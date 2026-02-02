@@ -1,8 +1,8 @@
-package org.example.backend.controller;
+package org.example.backend.Product.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.backend.model.Product;
-import org.example.backend.service.ProductService;
+import org.example.backend.Product.model.Product;
+import org.example.backend.Product.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/products")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:5173")
 public class ProductController {
 
     private final ProductService service;

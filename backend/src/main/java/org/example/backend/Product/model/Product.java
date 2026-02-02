@@ -1,23 +1,21 @@
-package grocceryshopping_app_g3.backend.Product;
+package org.example.backend.Product.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Document(collection = "products")
 public class Product {
+
     @Id
-    private String id;
+    private String id;   // Mongo ObjectId
+
     private String name;
     private String category;
-    private double price;
+    private Double price;
     private String unit;
-    private int stock;
+    private Integer stock;
     private String image;
-
 }

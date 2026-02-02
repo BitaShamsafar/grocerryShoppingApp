@@ -1,8 +1,8 @@
-package org.example.backend.service;
+package org.example.backend.Product.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.backend.model.Product;
-import org.example.backend.repository.ProductRepository;
+import org.example.backend.Product.model.Product;
+import org.example.backend.Product.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

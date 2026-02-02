@@ -40,3 +40,119 @@
 .read-the-docs {
     color: #888;
 }
+.products-grid {
+    display: grid;
+    width: 70%;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 24px;
+    margin-top: 25px;
+}
+/* Product Card */
+.product-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 16px;
+    width: 120px;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+/* Hover Effect */
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Product Image */
+.product-image {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin: 0 auto 12px;
+}
+
+/* Product Name */
+.product-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 6px;
+}
+
+/* Product Price */
+.product-price {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 14px;
+}
+
+/* Add to Cart Button */
+.add-btn {
+    background: #2f7d32;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+/* Button Hover */
+.add-btn:hover {
+    background: #256428;
+}
+
+/* Button Active */
+.add-btn:active {
+    transform: scale(0.97);
+}
+/* Load More Button */
+.load-more-btn {
+    background: linear-gradient(135deg, #2f7d32, #43a047);
+    color: #ffffff;
+
+    border: none;
+    border-radius: 10px;
+
+    padding: 12px 32px;
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+    display: block;
+    margin: 40px auto;
+
+    box-shadow: 0 6px 14px rgba(47, 125, 50, 0.3);
+    transition: all 0.25s ease;
+}
+
+/* Hover */
+.load-more-btn:hover {
+    background: linear-gradient(135deg, #256428, #388e3c);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(47, 125, 50, 0.4);
+}
+
+/* Active (Click) */
+.load-more-btn:active {
+    transform: scale(0.97);
+}
+
+/* Disabled */
+.load-more-btn:disabled {
+    background: #cccccc;
+    color: #777;
+    cursor: not-allowed;
+    box-shadow: none;
+}

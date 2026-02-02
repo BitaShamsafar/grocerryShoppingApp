@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import type {List} from "../Types/List.ts";
 import ListCard from "./ListCard.tsx";
 import axios from "axios";

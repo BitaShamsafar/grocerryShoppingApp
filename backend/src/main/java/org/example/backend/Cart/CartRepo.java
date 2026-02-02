@@ -1,8 +1,7 @@
-package grocceryshopping_app_g3.backend.Cart;
+package org.example.backend.Cart;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.Optional;
 

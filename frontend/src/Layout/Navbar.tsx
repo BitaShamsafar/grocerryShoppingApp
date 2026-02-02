@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {useCart} from "../Context/CartContext.tsx";
 
 export default function Navbar() {
@@ -10,13 +10,13 @@ export default function Navbar() {
                 <h2 className="navbar-title">🛒 Grocery App</h2>
                 {/*Search field*/}
                 <div className="navbar-center">
-                <div className="search-container">
-                    <span>🔍</span>
-                <input
-                    type="text"
-                    placeholder="Search for products..."
-                />
-                </div>
+                    <div className="search-container">
+                        <span>🔍</span>
+                    <input
+                        type="text"
+                        placeholder="Search for products..."
+                    />
+                    </div>
                 </div>
                 <div className="navbar-right">
                 {/* Login button */}
