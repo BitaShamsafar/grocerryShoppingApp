@@ -1,39 +1,192 @@
-.ListCard {
-    background-color: #fdf2e9;   /* sanfter Hintergrund */
-    border: 1px solid #e2d6c5;   /* dezenter Rahmen */
-    border-radius: 8px;           /* abgerundete Ecken */
-    padding: 16px;
-    margin-bottom: 12px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* leichter Schatten */
-    transition: transform 0.2s, box-shadow 0.2s;
+/* Navbar wrapper */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eaeaea;
+    font-family: Arial, sans-serif;
+}
+
+/* Left title */
+.navbar-title {
+    font-size: 22px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Middle section */
+.navbar-center {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex: 1;
+    margin-left: 200px;
+}
+
+/* Search */
+.search-container {
+    position: relative;
+}
+
+.search-container input {
+    padding: 8px 12px 8px 36px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    width: 440px;
+}
+
+/* Magnifier icon */
+.search-container span {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #888;
+}
+
+/* Right buttons */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+/* Buttons general */
+.navbar button {
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: none;
     cursor: pointer;
-    flex: 1 1 250px;         /* jede Karte mindestens 250px, flexibel wachsend */
-    max-width: 300px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-.ListCard:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+/* Login */
+.login-btn {
+    background-color: #f5f5f5;
 }
 
-.ListCard h3 {
-    margin: 0 0 8px 0;
-    font-size: 1.2rem;
-    color: #333;
+/* Wishlist */
+.wishlist-btn {
+    background-color: #ffecec;
 }
 
-.ListCard p {
+/* Cart */
+.cart-btn {
+    background-color: palegreen;
+    color: white;
+    font-weight: bold;
+}
+/* Right buttons hover */
+.navbar-right button {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar-right button:hover {
+    transform: translateY(-2px); /* easy lifting */
+}
+
+/* Hover-colors */
+.login-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.wishlist-btn:hover {
+    background-color: #ffd6d6;
+}
+
+.cart-btn:hover {
+    background-color: #27ae60;
+}
+
+
+/* Wrapper für Cart Button */
+.cart-wrapper {
+    position: relative;
+    display: inline-block; /* wichtig, sonst Dropdown verschiebt Navbar */
+}
+
+
+
+/* Dropdown container */
+.cart-dropdown {
+    position: absolute;
+    top: 48px; /* etwas unterhalb des Buttons */
+    right: 0;  /* rechts ausrichten */
+    width: 300px;
+    max-height: 400px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    padding: 12px;
+    z-index: 100;
+    overflow-y: auto;
+}
+
+/* Empty cart message */
+.empty-cart {
+    text-align: center;
+    color: #555;
+    padding: 12px 0;
+}
+/*  Item image*/
+.cart-item-image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Cart items list */
+.cart-items {
+    list-style: none;
+    padding: 0;
     margin: 0;
-    font-size: 0.95rem;
-    color: #666;
 }
 
-.ShoppingLists{
-    display: flex;           /* Flexbox aktivieren */
-    flex-wrap: wrap;         /* Zeilen umbrechen, wenn Platz fehlt */
-    gap: 16px;               /* Abstand zwischen den Karten */
-    justify-content: center;
-    width: 100%;            /* Container nimmt volle Breite */
-    margin: 20px auto;
-    padding: 0 10px;
+/* Single item */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
 }
+
+/* Last item: total */
+.cart-total {
+    font-weight: bold;
+    padding-top: 8px;
+    border-top: 1px solid #ccc;
+    margin-top: 6px;
+    text-align: right;
+}
+
+/* Optional: scrollbar styling */
+.cart-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+.cart-dropdown::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 3px;
+}
+.cart-dropdown-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 4px;
+    text-align: left;
+}
+
+
+

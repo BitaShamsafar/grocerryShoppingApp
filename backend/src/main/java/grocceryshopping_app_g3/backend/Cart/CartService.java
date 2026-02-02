@@ -68,7 +68,8 @@ public class CartService {
                 product.getId(),
                 product.getName(),
                 product.getPrice(),
-                quantity
+                quantity,
+                product.getImage()
         );
 
         cart.getItems().add(newItem);
