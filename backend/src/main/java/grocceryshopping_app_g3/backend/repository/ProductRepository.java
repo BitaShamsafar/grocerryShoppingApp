@@ -1,6 +1,6 @@
-package org.example.backend.repository;
+package grocceryshopping_app_g3.backend.repository;
 
-import org.example.backend.model.Product;
+import grocceryshopping_app_g3.backend.model.Product;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package grocceryshopping_app_g3.backend.Product;
+package grocceryshopping_app_g3.backend.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,18 +6,17 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "products")
-public class Product {
+@Document(collection = "carts")
+public class Cart {
     @Id
     private String id;
-    private String name;
-    private String category;
-    private double price;
-    private String unit;
-    private int stock;
-    private String image;
-
+    private String userId;
+    private List<CartItem> items = new ArrayList<>();
+    double totalPrice;
 }

@@ -1,8 +1,8 @@
-package org.example.backend.controller;
+package grocceryshopping_app_g3.backend.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.backend.model.Product;
-import org.example.backend.service.ProductService;
+import grocceryshopping_app_g3.backend.model.Product;
+import grocceryshopping_app_g3.backend.Service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

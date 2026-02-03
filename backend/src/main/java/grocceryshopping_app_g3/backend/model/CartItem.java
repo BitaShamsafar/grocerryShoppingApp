@@ -1,4 +1,4 @@
-package grocceryshopping_app_g3.backend.Cart;
+package grocceryshopping_app_g3.backend.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

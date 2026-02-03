@@ -1,20 +1,20 @@
-package grocceryshopping_app_g3.backend.Cart;
+package grocceryshopping_app_g3.backend.Service;
 
-import grocceryshopping_app_g3.backend.Product.Product;
-import grocceryshopping_app_g3.backend.Product.ProductRepo;
+import grocceryshopping_app_g3.backend.model.Cart;
+import grocceryshopping_app_g3.backend.model.CartItem;
+import grocceryshopping_app_g3.backend.model.Product;
+import grocceryshopping_app_g3.backend.repository.CartRepo;
+import grocceryshopping_app_g3.backend.repository.ProductRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CartService {
     private final CartRepo cartRepo;
-    private final ProductRepo productRepo;
+    private final ProductRepository productRepository;
 
-    public CartService(CartRepo cartRepo , ProductRepo productRepo) {
+    public CartService(CartRepo cartRepo , ProductRepository productRepo) {
         this.cartRepo = cartRepo;
-        this.productRepo = productRepo;
+        this.productRepository = productRepo;
     }
 
     // Auxiliary function: get a Cart by user ID or create one for this user
@@ -49,7 +49,7 @@ public class CartService {
         Cart cart = getOrCreateCart(userId);
 
         // Get the product
-        Product product = productRepo.findById(productId)
+        Product product = productRepository.findById(productId)
                 .orElseThrow(() ->
                         new RuntimeException("Product not found: " + productId)
                 );
