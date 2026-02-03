@@ -7,7 +7,7 @@ const AllProducs = () => {
     const [allProducts, setAllProducts]=useState<Product[]>([])
     const [loading, setLoading] = useState<boolean>(true)
     const [slicedData, setSlicedData] = useState<Product[]>([])
-    const sliceIndex = useRef(12)
+    const sliceIndex = useRef(15)
     const [isEndOfData, setIsEndOfData] = useState<boolean>(false)
     const loadMore = () => {
        if(sliceIndex.current >= allProducts.length){
@@ -16,8 +16,8 @@ const AllProducs = () => {
        }
        console.log("sliceIndex.current", sliceIndex.current)
        setSlicedData(prevState => [...prevState,
-           ...(allProducts.slice(sliceIndex.current, sliceIndex.current+12))])
-        sliceIndex.current = sliceIndex.current + 12
+           ...(allProducts.slice(sliceIndex.current, sliceIndex.current+15))])
+        sliceIndex.current = sliceIndex.current + 15
     }
     useEffect(() => {
         api.get('products')
