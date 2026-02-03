@@ -1,9 +1,17 @@
 import React, {useState} from 'react';
 import {useCart} from "../Context/CartContext.tsx";
+import {useNavigate} from "react-router-dom";
 
 export default function Navbar() {
     const { cart, cartCount } = useCart();
     const [showCart, setShowCart] = useState(false);
+
+    const navigate = useNavigate();
+
+    const goToCartPage = () => {
+        setShowCart(false); // Dropdown schließen
+        navigate("/getCart");
+    };
     return (
         <div>
             <nav className="navbar">
@@ -58,6 +66,10 @@ export default function Navbar() {
                                     </li>
                                 </ul>
                             )}
+                            {/* View Cart Button */}
+                            <button className="cart-btn" onClick={goToCartPage}>
+                                View Cart
+                            </button>
                         </div>
                     )}
                 </div>
