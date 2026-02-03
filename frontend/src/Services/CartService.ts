@@ -3,6 +3,7 @@ import type {Cart} from "../Types/Cart.ts";
 
 // GET cart
 export const getCart = (userId: string) => {
+    console.log('check', api)
     return api
         .get<Cart>("/cart", { params: { userId } })
         .then((res) => res.data)
@@ -28,3 +29,4 @@ export const addToCart = (
             return null;
         });
 };
+

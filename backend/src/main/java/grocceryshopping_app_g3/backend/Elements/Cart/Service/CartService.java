@@ -1,16 +1,17 @@
-package grocceryshopping_app_g3.backend.Service;
-
-import grocceryshopping_app_g3.backend.model.Cart;
-import grocceryshopping_app_g3.backend.model.CartItem;
-import grocceryshopping_app_g3.backend.model.Product;
-import grocceryshopping_app_g3.backend.repository.CartRepo;
-import grocceryshopping_app_g3.backend.repository.ProductRepository;
+package grocceryshopping_app_g3.backend.Elements.Cart.Service;
+import grocceryshopping_app_g3.backend.Elements.Cart.model.Cart;
+import grocceryshopping_app_g3.backend.Elements.Cart.model.CartItem;
+import grocceryshopping_app_g3.backend.Elements.Cart.repository.CartRepo;
+import grocceryshopping_app_g3.backend.Elements.Product.model.Product;
+import grocceryshopping_app_g3.backend.Elements.Product.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CartService {
     private final CartRepo cartRepo;
     private final ProductRepository productRepository;
+
+
 
     public CartService(CartRepo cartRepo , ProductRepository productRepo) {
         this.cartRepo = cartRepo;

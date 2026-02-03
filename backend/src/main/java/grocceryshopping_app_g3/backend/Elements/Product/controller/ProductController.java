@@ -1,14 +1,17 @@
-package grocceryshopping_app_g3.backend.controller;
+package grocceryshopping_app_g3.backend.Elements.Product.controller;
+
+import grocceryshopping_app_g3.backend.Elements.Product.model.Product;
+import grocceryshopping_app_g3.backend.Elements.Product.service.ProductService;
+import lombok.RequiredArgsConstructor;
 
 import lombok.RequiredArgsConstructor;
-import grocceryshopping_app_g3.backend.model.Product;
-import grocceryshopping_app_g3.backend.Service.ProductService;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("api/products")
 @RequiredArgsConstructor
 public class ProductController {
 

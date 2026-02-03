@@ -1,7 +1,7 @@
-package grocceryshopping_app_g3.backend.controller;
+package grocceryshopping_app_g3.backend.Elements.Cart.controller;
 
-import grocceryshopping_app_g3.backend.Service.CartService;
-import grocceryshopping_app_g3.backend.model.Cart;
+import grocceryshopping_app_g3.backend.Elements.Cart.Service.CartService;
+import grocceryshopping_app_g3.backend.Elements.Cart.model.Cart;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

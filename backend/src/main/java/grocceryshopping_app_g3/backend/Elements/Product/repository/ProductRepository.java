@@ -1,6 +1,6 @@
-package grocceryshopping_app_g3.backend.repository;
+package grocceryshopping_app_g3.backend.Elements.Product.repository;
 
-import grocceryshopping_app_g3.backend.model.Product;
+import grocceryshopping_app_g3.backend.Elements.Product.model.Product;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

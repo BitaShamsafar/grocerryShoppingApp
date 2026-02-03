@@ -3,7 +3,12 @@ export type Product ={
     name: string;
     category?: string;
     price: number;
-    unit?: string;
-    stock?: number;
-    image?: string;
+    unit: string;
+    stock: number;
+    image: string;
+}
+
+export type ProductCardProps = {
+    product: Product;
+    index: number
 }

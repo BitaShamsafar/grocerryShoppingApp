@@ -1,8 +1,9 @@
-package grocceryshopping_app_g3.backend.Service;
+package grocceryshopping_app_g3.backend.Elements.Product.service;
 
+
+import grocceryshopping_app_g3.backend.Elements.Product.model.Product;
+import grocceryshopping_app_g3.backend.Elements.Product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
-import grocceryshopping_app_g3.backend.model.Product;
-import grocceryshopping_app_g3.backend.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
