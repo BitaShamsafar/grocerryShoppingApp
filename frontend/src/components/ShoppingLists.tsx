@@ -5,12 +5,6 @@ import axios from "axios";
 
 export default function ShoppingLists(props) {
 
-    //Test data
-    const dummyLists: List[] = [
-        { id: 1, name: "Wocheneinkauf",content:"Milch" },
-        { id: 2, name: "Party-Einkauf",content:"Getränke" },
-        { id: 3, name: "Obst & Gemüse",content:"Erdbeeren" },
-    ];
     const [lists, setLists] = useState<List[]>();
     const [error, setError] = useState("");
     useEffect(()=>{axios.get("/api/lists")
@@ -24,7 +18,7 @@ export default function ShoppingLists(props) {
     return (
         <><h1>My shopping lists</h1>
             {error && <p>{error}</p>}
-        <div className={"ShoppingLists"}>
+        <div className="ShoppingLists">
             {lists.map(list =><ListCard list={list} key={list.id}/>)}
         </div>
         </>

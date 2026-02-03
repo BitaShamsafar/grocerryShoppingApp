@@ -1,9 +1,14 @@
+body{
+    background-color: #f2f0f0;
+    font-family: sans-serif;
+}
 #root {
     max-width: 1280px;
     margin: 0 auto;
     padding: 2rem;
     text-align: center;
 }
+
 
 .logo {
     height: 6em;
@@ -40,10 +45,13 @@
 .read-the-docs {
     color: #888;
 }
+
 .products-grid {
-    display: grid;
-    width: 70%;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+
+    display: flex;
+    flex-flow: wrap row;
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     gap: 24px;
     margin-top: 25px;
 }
@@ -52,7 +60,7 @@
     background: #ffffff;
     border-radius: 14px;
     padding: 16px;
-    width: 120px;
+    width: 145px;
     text-align: center;
 
     display: flex;
@@ -94,7 +102,7 @@
 }
 
 /* Add to Cart Button */
-.add-btn {
+.addToCart-btn {
     background: #2f7d32;
     color: #ffffff;
     border: none;
@@ -106,16 +114,32 @@
 
     cursor: pointer;
     transition: background 0.2s ease;
+
 }
 
 /* Button Hover */
-.add-btn:hover {
+.addToCart-btn:hover {
     background: #256428;
 }
 
 /* Button Active */
-.add-btn:active {
+.addToCart-btn-available:active {
     transform: scale(0.97);
+}
+.addToCart-disabled{
+ background-color: #888888 !important;
+}
+.addToWish-btn{
+    background-color: #fa5353;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 25%;
+    padding: 8px 0;
+    margin-left: 5px;
+
+    cursor: pointer;
+    transition: background 0.2s ease;
 }
 /* Load More Button */
 .load-more-btn {
@@ -125,7 +149,7 @@
     border: none;
     border-radius: 10px;
 
-    padding: 12px 32px;
+    padding: 12px 52px;
     font-size: 15px;
     font-weight: 600;
 
@@ -155,4 +179,160 @@
     color: #777;
     cursor: not-allowed;
     box-shadow: none;
+}
+
+.singleProduct_wrapper {
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.singleProduct_image {
+    flex: 1;
+}
+
+.singleProduct_details > .product-image {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.thumbnail-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.thumbnail {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.thumbnail:hover {
+    border-color: green;
+}
+
+.singleProduct_details {
+    flex: 2;
+    border: 1px solid #e0e0e0;
+    padding: 1.5rem;
+    text-align: left;
+    border-radius: 12px;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+
+}
+
+.category {
+    color: #555;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    font-size: 13px;
+    border-bottom: 1px solid #edeaea;
+}
+
+.price {
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #edeaea;
+}
+.price span{
+    font-weight: 100;
+    font-size: 1rem;
+}
+
+.stock {
+    color: green;
+    margin-bottom: 1rem;
+}
+.not_available{
+ color: red;
+}
+
+.description {
+    margin-bottom: 1rem;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    width: fit-content;
+}
+
+.quantity button {
+    width: 35px;
+    height: 35px;
+    background-color: #e0e0e0;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+.quantity_input {
+    width: 10px;
+    height: 23px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    padding: 0.3rem;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.addToCart-btn {
+    background-color: #4a7c4a;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.related-products {
+    margin-top: 3rem;
+}
+
+.related-list {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.related-item {
+    width: 150px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    padding: 0.8rem;
+    border-radius: 10px;
+}
+
+.related-item img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.related-name {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.related-price {
+    margin-bottom: 0.5rem;
+    color: #333;
 }
