@@ -70,6 +70,7 @@ body{
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
     transition: all 0.25s ease;
     cursor: pointer;
+    flex: 0 0 calc(19% - 40px);
 }
 
 /* Hover Effect */

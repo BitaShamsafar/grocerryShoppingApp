@@ -30,3 +30,20 @@ export const addToCart = (
         });
 };
 
+// UPDATE quantity
+export const updateCartItem = (
+    userId: string,
+    productId: string,
+    quantity: number
+) => {
+    return api
+        .put<Cart>("/cart/update", null, {
+            params: { userId, productId, quantity }
+        })
+        .then(res => res.data)
+        .catch(err => {
+            console.error("Failed to update cart item!", err);
+            return null;
+        });
+};
+

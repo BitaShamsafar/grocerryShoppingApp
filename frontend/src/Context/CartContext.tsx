@@ -1,13 +1,14 @@
 
 import type {Cart} from "../Types/Cart.ts";
 import {createContext, useContext, useEffect, useMemo, useState} from "react";
-import {addToCart, getCart} from "../Services/CartService.ts";
+import {addToCart, getCart, updateCartItem} from "../Services/CartService.ts";
 
 // Define the type of the context
 type CartContextType ={
     cart: Cart | null;
     cartCount: number;
     addItem: (productId: string, quantity: number) => void;
+    updateItem: (productId: string, quantity: number) => void;
 }
 // Create the context
 const CartContext = createContext<CartContextType | null>(null);
@@ -24,6 +25,12 @@ export default function CartProvider({ children }: { children: React.ReactNode }
         });
     };
 
+    const updateItem = (productId: string, quantity: number) => {
+        updateCartItem(USER_ID, productId, quantity).then(updatedCart => {
+            if (updatedCart) setCart(updatedCart);
+        });
+    };
+
     // Load cart from backend
     useEffect(() => {
         getCart(USER_ID).then(setCart);
@@ -31,7 +38,7 @@ export default function CartProvider({ children }: { children: React.ReactNode }
     // calculate the number of items
     const cartCount:number = cart ? cart.items.reduce((sum, item) => sum + item.quantity, 0) : 0;
     const value = useMemo(() => {
-        return {cart, cartCount, addItem}
+        return {cart, cartCount, addItem, updateItem}
     }, [
         cart,
         cartCount,

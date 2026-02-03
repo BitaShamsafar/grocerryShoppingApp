@@ -3,7 +3,7 @@ import type {List} from "../Types/List.ts";
 import ListCard from "./ListCard.tsx";
 import axios from "axios";
 
-export default function ShoppingLists(props) {
+export default function ShoppingLists() {
 
     const [lists, setLists] = useState<List[]>();
     const [error, setError] = useState("");

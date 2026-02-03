@@ -64,14 +64,14 @@ export default function Navbar() {
                                             />
                                             <span>{item.name}</span>
                                             <span>
-                        {item.quantity} × ${item.price.toFixed(2)}
+                        {item.quantity} × {item.price.toFixed(2)}€
                       </span>
                                         </li>
                                     ))}
 
                                 </ul>
                                 <div className="cart-total">
-                                     Total: ${cart.totalPrice.toFixed(2)}
+                                     Total: {cart.totalPrice.toFixed(2)}€
                                 </div>
                                 </>
                             )}

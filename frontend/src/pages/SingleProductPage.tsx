@@ -40,11 +40,11 @@ const SingleProductPage = () =>{
                         <div className="singleProduct_details">
                             <h2 className="title">{product.name}</h2>
                             <div className="category">Category &gt; {product.category}</div>
-                            <div className="price"><span>Price:</span> ${product.price}  <span>/ {product.unit}</span></div>
+                            <div className="price"><span>Price:</span> €{product.price}  <span>/ {product.unit}</span></div>
                             <div className="stock">
                                 {
                                     (product?.stock > 0) ?
-                                        product?.stock + " / " + product.unit + " available in stock"
+                                        product?.stock + " unit available in stock"
                                         : <span className="not_available">currently not available in stock</span>
                                 }
                             </div>

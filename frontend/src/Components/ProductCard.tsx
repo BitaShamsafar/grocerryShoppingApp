@@ -7,10 +7,10 @@ const ProductCard = ({product, index}:ProductCardProps) => {
     const {addItem} = useCart()
     return <div className="product-card">
         <Link to={"/product/"+product.id} className="link-item">
-            <img src={"/assets/" + image} className="product-image"/>
+            <img alt={image} src={"/assets/" + image} className="product-image"/>
 
             <h3 className="product-name">{product.name}</h3>
-            <p className="product-price"><b>{product.price}€ </b> {product.unit}</p>
+            <p className="product-price"><b>{product.price}€ </b> / {product.unit}</p>
         </Link>
 
 
