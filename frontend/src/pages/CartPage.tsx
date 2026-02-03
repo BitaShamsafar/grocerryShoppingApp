@@ -3,7 +3,7 @@ import {useCart} from "../Context/CartContext.tsx";
 import "../Styles/CartPage.css";
 
 export default function CartPage() {
-    const { cart, updateItem } = useCart();
+    const { cart, updateItem, removeItem } = useCart();
 
     if (!cart) return <p>Loading cart...</p>;
 
@@ -22,6 +22,8 @@ export default function CartPage() {
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Subtotal</th>
+                        <th>Remove from cart</th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -61,6 +63,14 @@ export default function CartPage() {
                                 </div>
                             </td>
                             <td>{(item.price * item.quantity).toFixed(2)}€</td>
+                            <td>
+                                <button
+                                    className="remove-btn"
+                                    onClick={() => removeItem(item.productId)}
+                                >
+                                    🗑
+                                </button>
+                            </td>
                         </tr>
                     ))}
 

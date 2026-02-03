@@ -76,3 +76,16 @@
     font-weight: bold;
 }
 
+.remove-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 30px;
+    padding: 40px;
+
+}
+
+.remove-btn:hover {
+    transform: scale(1.2);
+}
+

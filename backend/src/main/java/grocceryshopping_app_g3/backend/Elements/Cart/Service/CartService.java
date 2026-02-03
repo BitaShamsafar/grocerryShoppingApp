@@ -94,21 +94,12 @@ public class CartService {
         return cartRepo.save(cart);
     }
     // DELETE /remove/{productId}
-    public Cart removeItem(String userId, String productId, int quantityToRemove) {
+    public Cart removeItem(String userId, String productId) {
         Cart cart = getOrCreateCart(userId);
 
-        for (CartItem item : cart.getItems()) {
-            if (item.getProductId().equals(productId)) {
-                int newQuantity = item.getQuantity() - quantityToRemove;
-                if (newQuantity <= 0) {
-                    // remove all
-                    cart.getItems().remove(item);
-                } else {
-                    item.setQuantity(newQuantity);
-                }
-                break;
-            }
-        }
+        cart.getItems().removeIf(item ->
+                item.getProductId().equals(productId)
+        );
         calculateTotal(cart);
         return cartRepo.save(cart);
     }

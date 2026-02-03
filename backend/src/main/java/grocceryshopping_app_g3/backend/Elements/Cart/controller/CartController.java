@@ -36,9 +36,8 @@ public class CartController {
     // DELETE /remove/{productId}
     @DeleteMapping("/remove/{productId}")
     public Cart removeItem(@RequestParam String userId,
-                           @PathVariable String productId,
-                           @RequestParam int quantityToRemove) {
-        return cartService.removeItem(userId, productId,quantityToRemove);
+                           @PathVariable String productId) {
+        return cartService.removeItem(userId, productId);
     }
 
     // DELETE /clear

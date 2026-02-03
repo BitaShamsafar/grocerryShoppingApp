@@ -46,4 +46,19 @@ export const updateCartItem = (
             return null;
         });
 };
+//Remove Item
+export const removeCartItem = (
+    userId: string,
+    productId: string
+) => {
+    return api
+        .delete<Cart>(`/cart/remove/${productId}`, {
+            params: { userId }
+        })
+        .then(res => res.data)
+        .catch(err => {
+            console.error("Failed to remove item!", err);
+            return null;
+        });
+};
 
