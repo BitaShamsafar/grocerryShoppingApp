@@ -15,11 +15,16 @@ export default function Navbar() {
         navigate("/getCart");
     };
     const [user, setUser] = useState<string | null>(null);
+    function login(){
+        const host:string=window.location.host === 'localhost:5173' ? 'http://localhost:8080': window.location.origin
+        window.open(host + '/oauth2/authorization/github', '_self')
+    }
+    function logout(){
+        const host:string=window.location.host === 'localhost:5173' ? 'http://localhost:8080': window.location.origin
+        window.open(host + '/logout', '_self')
+    }
 
-        function login(){
-            const host:string=window.location.host === 'localhost:5173' ? 'http://localhost:8080': window.location.origin
-            window.open(host + '/oauth2/authorization/github', '_self')
-        }
+
 
     const loadUser = () => {
         axios.get('api/auth/me')
@@ -49,11 +54,18 @@ export default function Navbar() {
                 </div>
                 </div>
                 <div className="navbar-right">
-                {/* Login button */}
+                {/* Login Logout buttons */}
                     {user ? (
-                        <span>👤 Hello {user} !</span>
+                        <>
+                            <span className="user-name"> Hello {user} !</span>
+                            <button className="logout-btn" onClick={logout}>
+                                👤 Logout
+                            </button>
+                        </>
                     ) : (
-                        <button className="login-btn" onClick={login}>Login</button>
+                        <button className="login-btn" onClick={login}>
+                            👤 Login
+                        </button>
                     )}
                 {/* Wishlist button
                 <button className="wishlist-btn">
