@@ -37,10 +37,10 @@ export default function Navbar() {
                 <button className="login-btn">
                     👤Login
                 </button>
-                {/* Wishlist button */}
+                {/* Wishlist button
                 <button className="wishlist-btn">
                     ❤️ Wishlist
-                </button>
+                </button>*/}
                 {/* Cart button with item count */}
                 <button  className="cart-btn" onClick={() => setShowCart(!showCart)}>
                     🛒 Cart ({cartCount})
