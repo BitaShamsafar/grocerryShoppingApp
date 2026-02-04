@@ -2,6 +2,7 @@
 import type {Cart} from "../Types/Cart.ts";
 import {createContext, useContext, useEffect, useMemo, useState} from "react";
 import {addToCart, getCart, removeCartItem, updateCartItem,clearCartApi} from "../Services/CartService.ts";
+import axios from "axios";
 
 // Define the type of the context
 type CartContextType ={
@@ -11,6 +12,7 @@ type CartContextType ={
     updateItem: (productId: string, quantity: number) => void;
     removeItem: (productId: string) => void;
     clearCart: () => void;
+    user: string | null;
 }
 // Create the context
 const CartContext = createContext<CartContextType | null>(null);
@@ -18,7 +20,12 @@ const CartContext = createContext<CartContextType | null>(null);
 export default function CartProvider({ children }: { children: React.ReactNode }) {
     const [cart, setCart] = useState<Cart | null>(null);
     const USER_ID = "65f101a1bc001";// Hardcoded for now
-
+    const [user, setUser] = useState<string | null>(null);
+    useEffect(() => {
+        axios.get("/api/auth/me")
+            .then(res => setUser(res.data))
+            .catch(() => setUser(null));
+    }, []);
     const addItem = (productId: string, quantity: number) => {
         addToCart(USER_ID, productId, quantity).then((updatedCart) => {
             if (updatedCart) {
@@ -54,7 +61,7 @@ export default function CartProvider({ children }: { children: React.ReactNode }
     // calculate the number of items
     const cartCount:number = cart ? cart.items.reduce((sum, item) => sum + item.quantity, 0) : 0;
     const value = useMemo(() => {
-        return {cart, cartCount, addItem, updateItem, removeItem, clearCart}
+        return {cart, cartCount, addItem, updateItem, removeItem, clearCart,user}
     }, [
         cart,
         cartCount,

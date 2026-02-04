@@ -28,7 +28,13 @@ export default function Navbar() {
 
     const loadUser = () => {
         axios.get('api/auth/me')
-            .then(res => setUser(res.data))
+            .then(res => {setUser(res.data);
+                // Redirect nach Login
+                const redirect = sessionStorage.getItem("redirectAfterLogin");
+                if (redirect) {
+                    sessionStorage.removeItem("redirectAfterLogin");
+                    navigate(redirect);}
+                })
             .catch(() => setUser(null));
     }
         useEffect(() => {

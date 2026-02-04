@@ -3,7 +3,7 @@ import {useCart} from "../Context/CartContext.tsx";
 import "../Styles/CartPage.css";
 
 export default function CartPage() {
-    const { cart, updateItem, removeItem,clearCart} = useCart();
+    const { cart, updateItem, removeItem,clearCart,user} = useCart();
 
     if (!cart) return <p>Loading cart...</p>;
 
@@ -92,13 +92,22 @@ export default function CartPage() {
                     </button>
                     <button
                         className="pay-btn"
-                        onClick={() =>{const confirmPayment = window.confirm(
-                            `You will pay: ${cart.totalPrice.toFixed(2)}€`
-                        ); if (confirmPayment) {
-                            clearCart();
-                            alert("Payment successful! 🎉");
+                        onClick={() => {
+                            if (!user) {
+                                sessionStorage.setItem("redirectAfterLogin", "/getCart");
+                                alert("You must be logged in to pay ❗");
+                                return;
+                            }
+
+                            const confirmed = window.confirm(
+                                `You will pay ${cart.totalPrice.toFixed(2)}€. Continue?`
+                            );
+
+                            if (confirmed) {
+                                clearCart();
+                                alert("✅ Payment successful!");
+                            }
                         }}
-                    }
                     >
                         💳 Pay
                     </button>
