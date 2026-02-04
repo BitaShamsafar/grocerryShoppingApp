@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useCart} from "../Context/CartContext.tsx";
 import {useNavigate} from "react-router-dom";
 import {Link} from "react-router-dom";
+import axios from "axios";
 
 export default function Navbar() {
     const { cart, cartCount } = useCart();
@@ -13,6 +14,21 @@ export default function Navbar() {
         setShowCart(false); // Dropdown schließen
         navigate("/getCart");
     };
+    const [user, setUser] = useState<string | null>(null);
+
+        function login(){
+            const host:string=window.location.host === 'localhost:5173' ? 'http://localhost:8080': window.location.origin
+            window.open(host + '/oauth2/authorization/github', '_self')
+        }
+
+    const loadUser = () => {
+        axios.get('api/auth/me')
+            .then(res => setUser(res.data))
+            .catch(() => setUser(null));
+    }
+        useEffect(() => {
+            loadUser();
+        }, []);
     return (
         <>
             <div onClick={() => setShowCart(false)}
@@ -34,9 +50,11 @@ export default function Navbar() {
                 </div>
                 <div className="navbar-right">
                 {/* Login button */}
-                <button className="login-btn">
-                    👤Login
-                </button>
+                    {user ? (
+                        <span>👤 Hello {user}!</span>
+                    ) : (
+                        <button className="login-btn" onClick={login}>Login</button>
+                    )}
                 {/* Wishlist button
                 <button className="wishlist-btn">
                     ❤️ Wishlist
