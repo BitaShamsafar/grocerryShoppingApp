@@ -1,10 +1,15 @@
-import {useState} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import {useCart} from "../Context/CartContext.tsx";
 import {Link} from "react-router-dom";
+import {ProductsContext, type ProductsContextType} from "../Context/ProductsContext.tsx";
+
 
 export default function Navbar() {
     const { cart, cartCount } = useCart();
     const [showCart, setShowCart] = useState(false);
+    const {searchQuery, setSearchQuery} = useContext<ProductsContextType>(ProductsContext)
+
+
     return (
         <>
             <div onClick={() => setShowCart(false)}
@@ -12,8 +17,8 @@ export default function Navbar() {
             ></div>
         <div>
             <nav className="navbar">
-                <Link to="/">
-                <h2 className="navbar-title">🛒 Grocery App</h2></Link>
+                <Link className="link-item" to="/">
+                <h2 className="navbar-title">We Make 🛒 Easy</h2></Link>
                 {/*Search field*/}
                 <div className="navbar-center">
                     <div className="search-container">
@@ -21,17 +26,15 @@ export default function Navbar() {
                     <input
                         type="text"
                         placeholder="Search for products..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
                     />
                     </div>
                 </div>
                 <div className="navbar-right">
                 {/* Login button */}
-                {/*<button className="login-btn">*/}
-                {/*    👤Login*/}
-                {/*</button>*/}
-
-                <button className="wishlist-btn">
-                    ❤️
+                <button onClick={()=> {}} className="login-btn">
+                    👤
                 </button>
 
                 <button  className="cart-btn" onClick={() => setShowCart(!showCart)}>
@@ -54,10 +57,12 @@ export default function Navbar() {
                                                 alt={item.name}
                                                 className="cart-item-image"
                                             />
-                                            <span>{item.name}</span>
                                             <span>
-                        {item.quantity} × ${item.price.toFixed(2)}
-                      </span>
+                                                {item.name}
+                                            </span>
+                                            <span>
+                                                 {item.quantity} × {item.price.toFixed(2)} €
+                                            </span>
                                         </li>
                                     ))}
 
