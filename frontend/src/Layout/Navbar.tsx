@@ -51,7 +51,7 @@ export default function Navbar() {
                 <div className="navbar-right">
                 {/* Login button */}
                     {user ? (
-                        <span>👤 Hello {user}!</span>
+                        <span>👤 Hello {user} !</span>
                     ) : (
                         <button className="login-btn" onClick={login}>Login</button>
                     )}
