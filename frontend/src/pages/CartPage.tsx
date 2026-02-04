@@ -3,7 +3,7 @@ import {useCart} from "../Context/CartContext.tsx";
 import "../Styles/CartPage.css";
 
 export default function CartPage() {
-    const { cart, updateItem, removeItem } = useCart();
+    const { cart, updateItem, removeItem,clearCart} = useCart();
 
     if (!cart) return <p>Loading cart...</p>;
 
@@ -15,6 +15,7 @@ export default function CartPage() {
             {cart.items.length === 0 ? (
                 <p className="cart-empty">Your cart is empty!</p>
             ) : (
+                <>
                 <table className="cart-table">
                     <thead>
                     <tr>
@@ -82,6 +83,14 @@ export default function CartPage() {
                     </tr>
                     </tbody>
                 </table>
+                    {/* CLEAR CART BUTTON */}
+                    <button
+                        className="clear-cart-btn"
+                        onClick={clearCart}
+                    >
+                        🗑 Clear Cart
+                    </button>
+                </>
             )}
         </div>
     );

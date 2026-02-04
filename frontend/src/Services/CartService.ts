@@ -61,4 +61,15 @@ export const removeCartItem = (
             return null;
         });
 };
+// DELETE: clear cart
+export const clearCartApi = (userId: string) => {
+    return api
+        .delete("/cart/clear", { params: { userId } })
+        .then(res => res.data)
+        .catch(err => {
+            console.error("Failed to clear cart", err);
+            return null;
+        });
+};
+
 
