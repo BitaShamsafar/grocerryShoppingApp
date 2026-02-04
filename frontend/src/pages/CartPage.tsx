@@ -90,6 +90,18 @@ export default function CartPage() {
                     >
                         🗑 Clear Cart
                     </button>
+                    <button
+                        className="pay-btn"
+                        onClick={() =>{const confirmPayment = window.confirm(
+                            `You will pay: ${cart.totalPrice.toFixed(2)}€`
+                        ); if (confirmPayment) {
+                            clearCart();
+                            alert("Payment successful! 🎉");
+                        }}
+                    }
+                    >
+                        💳 Pay
+                    </button>
                 </>
             )}
         </div>
