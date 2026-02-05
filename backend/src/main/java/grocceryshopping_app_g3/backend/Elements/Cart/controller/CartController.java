@@ -42,8 +42,8 @@ public class CartController {
 
     // DELETE /clear
     @DeleteMapping("/clear")
-    public void clearCart(@RequestParam String userId) {
-        cartService.clearCart(userId);
+    public Cart clearCart(@RequestParam String userId) {
+        return cartService.clearCart(userId);
     }
 
 }
