@@ -1,19 +1,14 @@
 import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-import type {Product} from "../Types/Product.ts";
-import {api} from "../Services/api.ts";
+import {useState} from "react";
 import {useCart} from "../Context/CartContext.tsx";
+import useFetch from "../Hooks/useFetch.tsx";
+import type {Product} from "../Types/Product.ts";
 
 const SingleProductPage = () =>{
     const { id } = useParams();
-    const [product, setProduct] = useState<Product>()
-    useEffect(() => {
-            api.get("products/"+id)
-                .then(response => setProduct(response.data))
-                .catch(err => {
-                    throw new Error("item not found" + err)
-                })
-    }, [id]);
+    const product = useFetch<Product>("products/"+id)
+
+
     const {addItem} = useCart()
     const [quantity, setQuantity] = useState<number>(1)
     return (
@@ -21,7 +16,7 @@ const SingleProductPage = () =>{
                     <div className="singleProduct_wrapper">
                         <div className="singleProduct_image">
                             <img
-                                alt={product?.name}
+                                alt={product.name}
                                 src={"/assets/" + product?.image}
                                 className="product-image"
                             />
