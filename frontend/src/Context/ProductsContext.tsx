@@ -10,7 +10,7 @@ export type ProductsContextType = {
 
 export const ProductsContext = createContext<ProductsContextType | null>(null)
 
-const ProductContextProvider = ({children}) => {
+const ProductContextProvider = ({ children }: { children: React.ReactNode }) => {
     const [allProducts, setAllProducts]=useState<Product[]>([])
     const [searchQuery, setSearchQuery] = useState<string>('')
     const [errorMessage, setErrorMessage]= useState<string>()

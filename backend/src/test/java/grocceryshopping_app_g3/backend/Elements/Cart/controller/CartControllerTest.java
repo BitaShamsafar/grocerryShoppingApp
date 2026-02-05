@@ -4,6 +4,7 @@ import grocceryshopping_app_g3.backend.Elements.Cart.model.Cart;
 import grocceryshopping_app_g3.backend.Elements.Cart.repository.CartRepo;
 import grocceryshopping_app_g3.backend.Elements.Product.model.Product;
 import grocceryshopping_app_g3.backend.Elements.Product.repository.ProductRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +24,12 @@ class CartControllerTest {
     private CartRepo repo;
     @Autowired
     private ProductRepository productRepository;
-
+    // Before each Test clean the test database
+    @BeforeEach
+    void cleanTestDb() {
+        repo.deleteAll();
+        productRepository.deleteAll();
+    }
     @Test
     void getCartTest() throws Exception{
         //GIVEN

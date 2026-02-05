@@ -1,4 +1,3 @@
-import React from 'react';
 import {useCart} from "../Context/CartContext.tsx";
 import "../Styles/CartPage.css";
 

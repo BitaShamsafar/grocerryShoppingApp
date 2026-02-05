@@ -2,7 +2,7 @@ import type { ProductCardProps} from "../Types/Product.ts";
 import {useCart} from "../Context/CartContext.tsx";
 import {Link} from "react-router-dom";
 
-const ProductCard = ({product, index}:ProductCardProps) => {
+const ProductCard = ({product}:ProductCardProps) => {
     const {addItem} = useCart()
     return <div className="product-card">
         <Link to={"/product/"+product.id} className="link-item">

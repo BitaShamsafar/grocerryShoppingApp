@@ -1,6 +1,6 @@
 import {type ReactElement, useContext, useEffect, useRef, useState} from "react";
 import type {Product} from "../Types/Product.ts";
-import ProductCard from "../components/ProductCard.tsx";
+import ProductCard from "../Components/ProductCard.tsx";
 import {ProductsContext, type ProductsContextType} from "../Context/ProductsContext.tsx";
 
 const AllProducs = () => {
