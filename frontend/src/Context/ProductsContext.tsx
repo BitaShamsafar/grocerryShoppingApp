@@ -4,7 +4,7 @@ import type {Product} from "../Types/Product.ts";
 export type ProductsContextType = {
     searchQuery: string,
     setSearchQuery: (state: string) => void
-    allProducts: Product[] | null
+    allProducts: Product[]
     errorMessage?: string
 }
 

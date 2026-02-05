@@ -9,7 +9,11 @@ const AllProducs = () => {
     const [slicedData, setSlicedData] = useState<Product[]>([])
     const sliceIndex = useRef(15)
     const [isEndOfData, setIsEndOfData] = useState<boolean>(false)
-    const { allProducts, errorMessage } =useContext<ProductsContextType>(ProductsContext)
+    //const { allProducts, errorMessage } =useContext<ProductsContextType>(ProductsContext)
+    const context:ProductsContextType|null = useContext(ProductsContext);        // <- useContext aufrufen
+    if (!context) throw new Error("ProductsContext not available"); // <- Null-Prüfung
+
+    const { allProducts, errorMessage } = context;
 
     const loadMore = () => {
        if(sliceIndex.current >= allProducts.length){

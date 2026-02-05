@@ -3,12 +3,18 @@ import {useCart} from "../Context/CartContext.tsx";
 import {useNavigate} from "react-router-dom";
 import {Link} from "react-router-dom";
 import axios from "axios";
-import {ProductsContext, type ProductsContextType} from "../Context/ProductsContext.tsx";
+import {ProductsContext} from "../Context/ProductsContext.tsx";
 
 export default function Navbar() {
     const { cart, cartCount } = useCart();
     const [showCart, setShowCart] = useState(false);
-    const {searchQuery, setSearchQuery} = useContext<ProductsContextType>(ProductsContext)
+    const context = useContext(ProductsContext);
+    if (!context) {
+        throw new Error("ProductsContext not available");
+    }
+
+    const { searchQuery, setSearchQuery } = context;
+    //const {searchQuery, setSearchQuery} = useContext<ProductsContextType>(ProductsContext)
 
     // org.example.backend.BackendApplication
 
