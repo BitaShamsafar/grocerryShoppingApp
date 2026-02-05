@@ -1,4 +1,4 @@
-package org.example.backend.Product.model;
+package grocceryshopping_app_g3.backend.Elements.Product.model;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

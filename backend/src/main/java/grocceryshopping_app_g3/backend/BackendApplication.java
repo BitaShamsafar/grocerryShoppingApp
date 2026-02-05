@@ -1,4 +1,4 @@
-package org.example.backend;
+package grocceryshopping_app_g3.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

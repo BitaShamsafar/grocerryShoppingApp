@@ -1,18 +1,21 @@
-package org.example.backend.Cart;
-
-
-import org.example.backend.Product.model.Product;
-import org.example.backend.Product.repository.ProductRepository;
+package grocceryshopping_app_g3.backend.Elements.Cart.Service;
+import grocceryshopping_app_g3.backend.Elements.Cart.model.Cart;
+import grocceryshopping_app_g3.backend.Elements.Cart.model.CartItem;
+import grocceryshopping_app_g3.backend.Elements.Cart.repository.CartRepo;
+import grocceryshopping_app_g3.backend.Elements.Product.model.Product;
+import grocceryshopping_app_g3.backend.Elements.Product.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CartService {
     private final CartRepo cartRepo;
-    private final ProductRepository productRepo;
+    private final ProductRepository productRepository;
+
+
 
     public CartService(CartRepo cartRepo , ProductRepository productRepo) {
         this.cartRepo = cartRepo;
-        this.productRepo = productRepo;
+        this.productRepository = productRepo;
     }
 
     // Auxiliary function: get a Cart by user ID or create one for this user
@@ -47,7 +50,7 @@ public class CartService {
         Cart cart = getOrCreateCart(userId);
 
         // Get the product
-        Product product = productRepo.findById(productId)
+        Product product = productRepository.findById(productId)
                 .orElseThrow(() ->
                         new RuntimeException("Product not found: " + productId)
                 );
@@ -91,21 +94,12 @@ public class CartService {
         return cartRepo.save(cart);
     }
     // DELETE /remove/{productId}
-    public Cart removeItem(String userId, String productId, int quantityToRemove) {
+    public Cart removeItem(String userId, String productId) {
         Cart cart = getOrCreateCart(userId);
 
-        for (CartItem item : cart.getItems()) {
-            if (item.getProductId().equals(productId)) {
-                int newQuantity = item.getQuantity() - quantityToRemove;
-                if (newQuantity <= 0) {
-                    // remove all
-                    cart.getItems().remove(item);
-                } else {
-                    item.setQuantity(newQuantity);
-                }
-                break;
-            }
-        }
+        cart.getItems().removeIf(item ->
+                item.getProductId().equals(productId)
+        );
         calculateTotal(cart);
         return cartRepo.save(cart);
     }

@@ -1,5 +1,7 @@
-package org.example.backend.Cart;
+package grocceryshopping_app_g3.backend.Elements.Cart.controller;
 
+import grocceryshopping_app_g3.backend.Elements.Cart.Service.CartService;
+import grocceryshopping_app_g3.backend.Elements.Cart.model.Cart;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -34,9 +36,8 @@ public class CartController {
     // DELETE /remove/{productId}
     @DeleteMapping("/remove/{productId}")
     public Cart removeItem(@RequestParam String userId,
-                           @PathVariable String productId,
-                           @RequestParam int quantityToRemove) {
-        return cartService.removeItem(userId, productId,quantityToRemove);
+                           @PathVariable String productId) {
+        return cartService.removeItem(userId, productId);
     }
 
     // DELETE /clear

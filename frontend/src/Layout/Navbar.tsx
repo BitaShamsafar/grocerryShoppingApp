@@ -1,15 +1,38 @@
 import {useState, useEffect, useContext} from 'react';
 import {useCart} from "../Context/CartContext.tsx";
+import {useNavigate} from "react-router-dom";
 import {Link} from "react-router-dom";
+import axios from "axios";
 import {ProductsContext, type ProductsContextType} from "../Context/ProductsContext.tsx";
-
 
 export default function Navbar() {
     const { cart, cartCount } = useCart();
     const [showCart, setShowCart] = useState(false);
     const {searchQuery, setSearchQuery} = useContext<ProductsContextType>(ProductsContext)
 
+    // org.example.backend.BackendApplication
 
+    const navigate = useNavigate();
+
+    const goToCartPage = () => {
+        setShowCart(false); // Dropdown schließen
+        navigate("/getCart");
+    };
+    const [user, setUser] = useState<string | null>(null);
+
+         const login = () =>{
+            const host:string= window.location.host === 'localhost:5173' ? 'http://localhost:8080': window.location.origin
+            window.open(host + '/oauth2/authorization/github', '_self')
+        }
+
+    const loadUser = () => {
+        axios.get('api/auth/me')
+            .then(res => setUser(res.data))
+            .catch(() => setUser(null));
+    }
+        useEffect(() => {
+            loadUser();
+        }, []);
     return (
         <>
             <div onClick={() => setShowCart(false)}
@@ -33,10 +56,16 @@ export default function Navbar() {
                 </div>
                 <div className="navbar-right">
                 {/* Login button */}
-                <button onClick={()=> {}} className="login-btn">
-                    👤
-                </button>
-
+                    {user ? (
+                        <span>👤 Hello {user}!</span>
+                    ) : (
+                        <button className="login-btn" onClick={login}>Login</button>
+                    )}
+                {/* Wishlist button
+                <button className="wishlist-btn">
+                    ❤️ Wishlist
+                </button>*/}
+                {/* Cart button with item count */}
                 <button  className="cart-btn" onClick={() => setShowCart(!showCart)}>
                     🛒 Cart ({cartCount})
                 </button>
@@ -68,15 +97,20 @@ export default function Navbar() {
 
                                 </ul>
                                 <div className="cart-total">
-                                     Total: ${cart.totalPrice.toFixed(2)}
+                                     Total: {cart.totalPrice.toFixed(2)}€
                                 </div>
                                 </>
                             )}
+                            {/* View Cart Button */}
+                            <button className="cart-btn" onClick={goToCartPage}>
+                                View Cart
+                            </button>
                         </div>
                     )}
                 </div>
             </nav>
-        </div></>
+        </div>
+            </>
     );
 }
 

@@ -1,4 +1,4 @@
-package org.example.backend.Cart;
+package grocceryshopping_app_g3.backend.Elements.Cart.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
